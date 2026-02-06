@@ -33,7 +33,7 @@ class ProductController extends Controller
             'MaDanhMuc' => 'required|exists:danh_muc,MaDanhMuc',
             'TenSanPham' => 'required|max:255',
             'ThuongHieu' => 'nullable|max:100',
-            'AnhChinh' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'AnhChinh' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'MoTa' => 'nullable',
             'TrangThai' => 'required|boolean',
         ], [
@@ -75,7 +75,7 @@ class ProductController extends Controller
         'MaDanhMuc' => 'required|exists:danh_muc,MaDanhMuc',
         'TenSanPham' => 'required|max:255',
         'ThuongHieu' => 'nullable|max:100',
-        'AnhChinh' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'AnhChinh' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         'MoTa' => 'nullable',
         'TrangThai' => 'required|boolean',
     ]);
@@ -135,7 +135,7 @@ class ProductController extends Controller
             'KichThuoc' => 'nullable|max:100',
             'DonGia' => 'required|numeric|min:0',
             'SoLuongTon' => 'required|integer|min:0',
-            'AnhMinhHoa' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'AnhMinhHoa' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'TrangThai' => 'required|boolean',
         ]);
         
@@ -174,7 +174,7 @@ class ProductController extends Controller
         'KichThuoc' => 'nullable|max:100',
         'DonGia' => 'required|numeric|min:0',
         'SoLuongTon' => 'required|integer|min:0',
-        'AnhMinhHoa' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'AnhMinhHoa' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         'TrangThai' => 'required|boolean',
     ]);
 

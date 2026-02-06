@@ -33,6 +33,8 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
+        // dd($sanPhamMoi->toArray());
+
         return view('home', compact('danhMuc', 'sanPhamMoi', 'sanPhamBanChay', 'tinTucMoi'));
     }
 }
