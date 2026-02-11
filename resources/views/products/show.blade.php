@@ -117,13 +117,13 @@
                             </label>
                             <div class="input-group" style="width: 150px;">
                                 <button type="button" class="btn btn-outline-secondary" onclick="decreaseQty()">
-                                    <i class="bi bi-dash"></i>
+                                    <i class="lni lni-minus"></i>
                                 </button>
                                 <input type="number" name="SoLuong" id="quantity" class="form-control text-center" 
                                        value="1" min="1" max="{{ min($sanPham->SoLuongTon, 20) }}" required>
 
                                 <button type="button" class="btn btn-outline-secondary" onclick="increaseQty()">
-                                    <i class="bi bi-plus"></i>
+                                    <i class="lni lni-plus"></i>
                                 </button>
                             </div>
                             <small class="text-muted" id="stockInfo">Còn hàng</small>
@@ -162,13 +162,13 @@
             @else
                 {{-- Chưa đăng nhập --}}
                 <div class="alert alert-warning alert-persistent alert-dismissible fade show">
-    <i class="bi bi-exclamation-triangle-fill"></i> Vui lòng <a href="{{ route('login') }}">đăng nhập</a> để mua hàng.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+                    <i class="bi bi-exclamation-triangle-fill"></i> Vui lòng <a href="{{ route('login') }}">đăng nhập</a> để mua hàng.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             @endauth
             
             <!-- Description -->
-            <div class="card">
+            <div class="card mt-3">
                 <div class="card-body">
                     <h5><i class="bi bi-info-circle-fill"></i> Mô tả sản phẩm</h5>
                     <p class="text-muted">{{ $sanPham->MoTa }}</p>
