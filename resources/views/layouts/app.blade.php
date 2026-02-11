@@ -53,19 +53,35 @@
                             <div class="nav-hotline">
                             </div>
                             <div class="navbar-cart">
+                                @if(auth()->user()->VaiTro == 0)
                                 <div class="cart-items">
-                                    <a href="javascript:void(0)" class="main-btn">
+                                    <a href="{{ route('cart.index') }}" class="main-btn">
                                         Giỏ hàng &nbsp;
                                         <i class="lni lni-cart"></i>
-                                        <span class="total-items">2</span>
+                                        @php
+                                            $cartCount = \App\Models\CTGioHang::where('MaNguoiDung', auth()->id())->count();
+                                        @endphp
+                                        @if($cartCount > 0)
+                                        <span class="total-items">{{ $cartCount }}</span>
+                                        @endif
                                     </a>
                                 </div>
+                                @endif
+                                @auth
                                 <div class="cart-items">
                                     <a href="javascript:void(0)" class="main-btn">
-                                        Đăng nhập &nbsp;
+                                        {{ auth()->user()->HoTen }} &nbsp;
                                         <i class="lni lni-user"></i>
                                     </a>
+                                    <div class="shopping-item">
+                                        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary w-100">Trang quản trị</a>
+                                        <a href="{{ route('profile.edit') }}" class="btn btn-primary w-100 mt-1">Thông tin cá nhân</a>
+                                        <a href="{{ route('orders.history') }}" class="btn btn-primary w-100 mt-1">Đơn hàng của tôi</a>
+                                        <a href="{{ route('feedback.create') }}" class="btn btn-primary w-100 mt-1">Gửi phản hồi</a>
+                                        <a href="{{ route('logout') }}" class="btn btn-primary w-100 mt-1">Đăng xuất</a>
+                                    </div>
                                 </div>
+                                @endauth
                             </div>
                         </div>
                     </div>
