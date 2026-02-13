@@ -158,7 +158,7 @@
                                                     class="btn btn-sm btn-outline-secondary btn-decrease" 
                                                     onclick="changeQuantity({{ $item->MaCTGioHang }}, -1)"
                                                     disabled>
-                                                <i class="bi bi-dash"></i>
+                                                <i class="lni lni-minus"></i>
                                             </button>
                                             <input type="number" 
                                                    class="form-control form-control-sm text-center quantity-input" 
@@ -172,7 +172,7 @@
                                                     class="btn btn-sm btn-outline-secondary btn-increase" 
                                                     onclick="changeQuantity({{ $item->MaCTGioHang }}, 1)"
                                                     disabled>
-                                                <i class="bi bi-plus"></i>
+                                                <i class="lni lni-plus"></i>
                                             </button>
                                         </div>
                                     </td>
@@ -187,7 +187,7 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" 
                                                     onclick="return confirm('Xóa sản phẩm khỏi giỏ hàng?')">
-                                                <i class="bi bi-trash-fill"></i>
+                                                <i class="lni lni-trash-can"></i>
                                             </button>
                                         </form>
                                     </td>

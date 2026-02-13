@@ -27,7 +27,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
-                        <a class="navbar-brand" href="index.html">
+                        <a class="navbar-brand" href="/">
                             <img src="/assets/images/logo/logo.svg" alt="Logo">
                         </a>
                         <!-- End Header Logo -->
@@ -53,34 +53,47 @@
                             <div class="nav-hotline">
                             </div>
                             <div class="navbar-cart">
-                                @if(auth()->user()->VaiTro == 0)
-                                <div class="cart-items">
-                                    <a href="{{ route('cart.index') }}" class="main-btn">
-                                        Giỏ hàng &nbsp;
-                                        <i class="lni lni-cart"></i>
-                                        @php
-                                            $cartCount = \App\Models\CTGioHang::where('MaNguoiDung', auth()->id())->count();
-                                        @endphp
-                                        @if($cartCount > 0)
-                                        <span class="total-items">{{ $cartCount }}</span>
-                                        @endif
-                                    </a>
-                                </div>
-                                @endif
                                 @auth
-                                <div class="cart-items">
-                                    <a href="javascript:void(0)" class="main-btn">
-                                        {{ auth()->user()->HoTen }} &nbsp;
-                                        <i class="lni lni-user"></i>
-                                    </a>
-                                    <div class="shopping-item">
-                                        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary w-100">Trang quản trị</a>
-                                        <a href="{{ route('profile.edit') }}" class="btn btn-primary w-100 mt-1">Thông tin cá nhân</a>
-                                        <a href="{{ route('orders.history') }}" class="btn btn-primary w-100 mt-1">Đơn hàng của tôi</a>
-                                        <a href="{{ route('feedback.create') }}" class="btn btn-primary w-100 mt-1">Gửi phản hồi</a>
-                                        <a href="{{ route('logout') }}" class="btn btn-primary w-100 mt-1">Đăng xuất</a>
+                                    @if(auth()->user()->VaiTro == 0)
+                                    <div class="cart-items">
+                                        <a href="{{ route('cart.index') }}" class="main-btn">
+                                            Giỏ hàng &nbsp;
+                                            <i class="lni lni-cart"></i>
+                                            @php
+                                                $cartCount = \App\Models\CTGioHang::where('MaNguoiDung', auth()->id())->count();
+                                            @endphp
+                                            @if($cartCount > 0)
+                                            <span class="total-items">{{ $cartCount }}</span>
+                                            @endif
+                                        </a>
                                     </div>
-                                </div>
+                                    @endif
+                                    <div class="cart-items">
+                                        <a href="javascript:void(0)" class="main-btn">
+                                            {{ auth()->user()->HoTen }} &nbsp;
+                                            <i class="lni lni-user"></i>
+                                        </a>
+                                        <div class="shopping-item">
+                                            <a href="{{ route('admin.dashboard') }}" class="btn btn-primary w-100">Trang quản trị</a>
+                                            <a href="{{ route('profile.edit') }}" class="btn btn-primary w-100 mt-1">Thông tin cá nhân</a>
+                                            <a href="{{ route('orders.history') }}" class="btn btn-primary w-100 mt-1">Đơn hàng của tôi</a>
+                                            <a href="{{ route('feedback.create') }}" class="btn btn-primary w-100 mt-1">Gửi phản hồi</a>
+                                            <a href="{{ route('logout') }}" class="btn btn-primary w-100 mt-1">Đăng xuất</a>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="cart-items">
+                                        <a href="{{ route('login') }}" class="main-btn">
+                                            Đăng nhập &nbsp;
+                                            <i class="lni lni-user"></i>
+                                        </a>
+                                    </div>
+                                    <div class="cart-items">
+                                        <a href="{{ route('register') }}" class="main-btn">
+                                            Đăng ký &nbsp;
+                                            <i class="lni lni-user"></i>
+                                        </a>
+                                    </div>
                                 @endauth
                             </div>
                         </div>
@@ -98,7 +111,7 @@
     </main>
 
     <!-- Start Footer Area -->
-    <footer class="footer mt-5">
+    <footer class="footer">
         <!-- Start Footer Top -->
         <div class="footer-top">
             <div class="container">

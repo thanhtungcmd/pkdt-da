@@ -96,7 +96,7 @@
                 <!-- Free Shipping -->
                 @foreach($danhMuc as $item)
                 <li>
-                    <a href="#">
+                    <a href="{{ route('products.index', ['danh_muc' => $item->MaDanhMuc]) }}">
                         <div class="media-icon">
                             <img src="{{ $item->AnhMinhHoa }}" alt="{{ $item->TenDanhMuc }}">
                         </div>
@@ -112,7 +112,7 @@
     <!-- End Shipping Info -->
 
     <!-- Start Product Grids -->
-    <section class="product-grids">
+    <section class="product-grids pb-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -124,20 +124,16 @@
                     <div class="row">
 
                         @foreach($sanPhamMoi as $item)
-                        <div class="col-3">
+                        <a href="{{ route('products.show', $item->MaSanPham) }}" class="col-3">
                             <!-- Start Single Product -->
                             <div class="single-product">
                                 <div class="product-image">
                                     <img src="{{ $item->AnhChinh }}" alt="#">
-                                    <div class="button">
-                                        <a href="product-details.html" class="btn"><i
-                                                class="lni lni-cart"></i> Add to Cart</a>
-                                    </div>
                                 </div>
                                 <div class="product-info">
                                     <span class="category">{{ $item->danhMuc->TenDanhMuc }}</span>
                                     <h4 class="title">
-                                        <a href="product-grids.html">{{ $item->TenSanPham }}</a>
+                                        <div>{{ $item->TenSanPham }}</div>
                                     </h4>
                                     @if( isset($item->bienThe[0]) )
                                     <div class="price">
@@ -147,7 +143,7 @@
                                 </div>
                             </div>
                             <!-- End Single Product -->
-                        </div>
+                        </a>
                         @endforeach
 
                     </div>

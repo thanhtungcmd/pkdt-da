@@ -287,7 +287,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger" 
                                             onclick="return confirm('Xóa đánh giá?')">
-                                        <i class="bi bi-trash-fill"></i>
+                                        <i class="lni lni-trash-can"></i>
                                     </button>
                                 </form>
                                 @endif
@@ -428,7 +428,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger" 
                                             onclick="return confirm('Xóa bình luận?')">
-                                        <i class="bi bi-trash-fill"></i>
+                                        <i class="lni lni-trash-can"></i>
                                     </button>
                                 </form>
                                 @endif
@@ -482,7 +482,7 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" 
                                                         onclick="return confirm('Xóa trả lời?')">
-                                                    <i class="bi bi-trash-fill"></i>
+                                                    <i class="lni lni-trash-can"></i>
                                                 </button>
                                             </form>
                                             @endif
