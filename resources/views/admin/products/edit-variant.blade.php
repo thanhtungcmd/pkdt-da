@@ -49,7 +49,7 @@
                         <label class="form-label">Ảnh minh họa *</label>
 
                         {{-- Ảnh hiện tại --}}
-                        <img src="{{ asset('uploads/' . $bienThe->AnhMinhHoa) }}" 
+                        <img src="{{ asset($bienThe->AnhMinhHoa) }}" 
                             class="img-thumbnail mb-2" 
                             style="max-width: 200px;">
 

@@ -78,7 +78,7 @@ class OrderController extends Controller
         ]);
 
         // TẠO THÔNG BÁO KHI ĐƠN HÀNG ĐÃ XÁC NHẬN
-        if ($newStatus == 'Đã xác nhận' && $oldStatus == 'Chờ xác nhận') {
+        if ($request->TrangThai == 'Đã xác nhận') {
             ThongBao::taoThongBao(
                 $donHang->MaNguoiDung, // Người nhận
                 'order_confirmed',

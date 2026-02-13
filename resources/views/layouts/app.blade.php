@@ -74,7 +74,9 @@
                                             <i class="lni lni-user"></i>
                                         </a>
                                         <div class="shopping-item">
+                                            @if(auth()->user()->VaiTro == 1)
                                             <a href="{{ route('admin.dashboard') }}" class="btn btn-primary w-100">Trang quản trị</a>
+                                            @endif
                                             <a href="{{ route('profile.edit') }}" class="btn btn-primary w-100 mt-1">Thông tin cá nhân</a>
                                             <a href="{{ route('orders.history') }}" class="btn btn-primary w-100 mt-1">Đơn hàng của tôi</a>
                                             <a href="{{ route('feedback.create') }}" class="btn btn-primary w-100 mt-1">Gửi phản hồi</a>
