@@ -20,7 +20,7 @@ class DonHang extends Model
         'DiaChiGiaoHang',
         'PTThanhToan',
         'TrangThai',
-        'MaMaGiamGia',
+        'MaGiamGia',
         'SoTienGiam',
     ];
 
@@ -49,7 +49,7 @@ class DonHang extends Model
     // Relationship với MaGiamGia
     public function maGiamGia()
     {
-        return $this->belongsTo(MaGiamGia::class, 'MaMaGiamGia', 'MaMaGiamGia');
+        return $this->belongsTo(MaGiamGia::class, 'MaGiamGia', 'MaGiamGia');
     }
 
     // Các trạng thái đơn hàng (đầy đủ để hiển thị trong hệ thống)

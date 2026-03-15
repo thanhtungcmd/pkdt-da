@@ -37,7 +37,7 @@ class CartController extends Controller
         // KIỂM TRA LẠI MÃ GIẢM GIÁ (QUAN TRỌNG!)
         // ============================================
         if (session('applied_coupon')) {
-            $maGiamGia = \App\Models\MaGiamGia::find(session('applied_coupon')['MaMaGiamGia']);
+            $maGiamGia = \App\Models\MaGiamGia::find(session('applied_coupon')['MaGiamGia']);
             
             if (!$maGiamGia) {
                 // Mã không tồn tại → Xóa
@@ -62,7 +62,7 @@ class CartController extends Controller
                     } else {
                         // Cập nhật lại số tiền giảm (nếu tổng tiền thay đổi)
                         session(['applied_coupon' => [
-                            'MaMaGiamGia' => $maGiamGia->MaMaGiamGia,
+                            'MaGiamGia' => $maGiamGia->MaGiamGia,
                             'MaCode' => $maGiamGia->MaCode,
                             'SoTienGiam' => $result['discount']
                         ]]);

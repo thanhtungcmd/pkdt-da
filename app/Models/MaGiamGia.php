@@ -11,7 +11,7 @@ class MaGiamGia extends Model
     use HasFactory;
 
     protected $table = 'ma_giam_gia';
-    protected $primaryKey = 'MaMaGiamGia';
+    protected $primaryKey = 'MaGiamGia';
 
     protected $fillable = [
         'MaCode',
@@ -37,13 +37,13 @@ class MaGiamGia extends Model
     // Quan hệ với bảng lich_su_ma_giam_gia
     public function lichSuSuDung()
     {
-        return $this->hasMany(LichSuMaGiamGia::class, 'MaMaGiamGia', 'MaMaGiamGia');
+        return $this->hasMany(LichSuMaGiamGia::class, 'MaGiamGia', 'MaGiamGia');
     }
 
     // Quan hệ với đơn hàng
     public function donHang()
     {
-        return $this->hasMany(DonHang::class, 'MaMaGiamGia', 'MaMaGiamGia');
+        return $this->hasMany(DonHang::class, 'MaGiamGia', 'MaGiamGia');
     }
 
     // Kiểm tra mã có hợp lệ không

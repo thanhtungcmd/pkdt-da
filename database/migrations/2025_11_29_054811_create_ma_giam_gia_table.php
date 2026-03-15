@@ -10,7 +10,7 @@ return new class extends Migration
     {
         // Bảng mã giảm giá
         Schema::create('ma_giam_gia', function (Blueprint $table) {
-            $table->id('MaMaGiamGia');
+            $table->id('MaGiamGia');
             $table->string('MaCode', 50)->unique(); // Mã giảm giá (VD: SUMMER2024)
             $table->enum('LoaiGiam', ['fixed', 'percent']); // Loại: giảm cố định hoặc %
             $table->decimal('GiaTri', 18, 2); // Giá trị giảm
@@ -28,7 +28,7 @@ return new class extends Migration
         // Bảng lưu lịch sử sử dụng mã giảm giá
         Schema::create('lich_su_ma_giam_gia', function (Blueprint $table) {
             $table->id('MaLichSu');
-            $table->foreignId('MaMaGiamGia')->constrained('ma_giam_gia', 'MaMaGiamGia')->onDelete('cascade');
+            $table->foreignId('MaGiamGia')->constrained('ma_giam_gia', 'MaGiamGia')->onDelete('cascade');
             $table->foreignId('MaNguoiDung')->nullable()->constrained('nguoi_dung', 'MaNguoiDung')->onDelete('set null');
             $table->foreignId('MaDonHang')->nullable()->constrained('don_hang', 'MaDonHang')->onDelete('set null');
             $table->decimal('SoTienGiam', 18, 2); // Số tiền đã giảm
@@ -38,16 +38,16 @@ return new class extends Migration
 
         // Thêm cột vào bảng don_hang
         Schema::table('don_hang', function (Blueprint $table) {
-            $table->foreignId('MaMaGiamGia')->nullable()->after('TongTien')->constrained('ma_giam_gia', 'MaMaGiamGia')->onDelete('set null');
-            $table->decimal('SoTienGiam', 18, 2)->default(0)->after('MaMaGiamGia');
+            $table->foreignId('MaGiamGia')->nullable()->after('TongTien')->constrained('ma_giam_gia', 'MaGiamGia')->onDelete('set null');
+            $table->decimal('SoTienGiam', 18, 2)->default(0)->after('MaGiamGia');
         });
     }
 
     public function down(): void
     {
         Schema::table('don_hang', function (Blueprint $table) {
-            $table->dropForeign(['MaMaGiamGia']);
-            $table->dropColumn(['MaMaGiamGia', 'SoTienGiam']);
+            $table->dropForeign(['MaGiamGia']);
+            $table->dropColumn(['MaGiamGia', 'SoTienGiam']);
         });
         
         Schema::dropIfExists('lich_su_ma_giam_gia');

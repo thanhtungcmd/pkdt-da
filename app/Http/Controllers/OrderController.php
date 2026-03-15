@@ -156,11 +156,11 @@ class OrderController extends Controller
             // XỬ LÝ MÃ GIẢM GIÁ - ĐÃ SỬA
             // ============================================
             $soTienGiam = 0;
-            $maMaGiamGia = null;
+            $MaGiamGia = null;
 
             if (session()->has('applied_coupon')) {
                 $appliedCoupon = session('applied_coupon');
-                $maGiamGia = MaGiamGia::find($appliedCoupon['MaMaGiamGia']);
+                $maGiamGia = MaGiamGia::find($appliedCoupon['MaGiamGia']);
                 
                 if (!$maGiamGia) {
                     // Mã không tồn tại
@@ -194,7 +194,7 @@ class OrderController extends Controller
                 
                 // OK - Áp dụng mã
                 $soTienGiam = $result['discount'];
-                $maMaGiamGia = $maGiamGia->MaMaGiamGia;
+                $MaGiamGia = $maGiamGia->MaGiamGia;
                 
                 // Giảm tổng tiền
                 $tongTien -= $soTienGiam;
@@ -205,7 +205,7 @@ class OrderController extends Controller
                 'MaNguoiDung' => Auth::id(),
                 'NgayDat' => Carbon::now(),
                 'TongTien' => $tongTien,
-                'MaMaGiamGia' => $maMaGiamGia,
+                'MaGiamGia' => $MaGiamGia,
                 'SoTienGiam' => $soTienGiam,
                 'DiaChiGiaoHang' => $request->DiaChi,
                 'PTThanhToan' => $request->PTThanhToan,
@@ -228,15 +228,15 @@ class OrderController extends Controller
             // ============================================
             // LƯU LỊCH SỬ SỬ DỤNG MÃ GIẢM GIÁ
             // ============================================
-            if ($maMaGiamGia && $soTienGiam > 0) {
-                $maGiamGia = MaGiamGia::find($maMaGiamGia);
+            if ($MaGiamGia && $soTienGiam > 0) {
+                $maGiamGia = MaGiamGia::find($MaGiamGia);
                 
                 // Tăng số lần sử dụng
                 $maGiamGia->tangSoLanSuDung();
                 
                 // Lưu lịch sử
                 LichSuMaGiamGia::create([
-                    'MaMaGiamGia' => $maMaGiamGia,
+                    'MaGiamGia' => $MaGiamGia,
                     'MaNguoiDung' => Auth::id(),
                     'MaDonHang' => $donHang->MaDonHang,
                     'SoTienGiam' => $soTienGiam,

@@ -5,30 +5,24 @@
 @section('content')
 
     <!-- Start Hero Area -->
-    <section class="hero-area">
+    <!-- <section class="hero-area">
         <div class="container">
             <div class="row">
                 <div class="col-12 custom-padding-right">
                     <div class="slider-head">
-                        <!-- Start Hero Slider -->
                         <div class="hero-slider">
-                            <!-- Start Single Slider -->
                             <div class="single-slider"
                                 style="background-image: url(https://cdn2.cellphones.com.vn/insecure/rs:fill:1036:450/q:100/plain/https://dashboard.cellphones.com.vn/storage/GALAXYMOI-D.png);">
                             </div>
-                            <!-- End Single Slider -->
-                            <!-- Start Single Slider -->
                             <div class="single-slider"
                                 style="background-image: url(https://cdn2.cellphones.com.vn/insecure/rs:fill:1036:450/q:100/plain/https://dashboard.cellphones.com.vn/storage/samsung-galaxy-a56-tet-homg-26.png);">
                             </div>
-                            <!-- End Single Slider -->
                         </div>
-                        <!-- End Hero Slider -->
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- End Hero Area -->
 
     <!-- Start Shipping Info -->

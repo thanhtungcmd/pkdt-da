@@ -58,7 +58,7 @@
                                 </tr>
                                 @endforeach
                                 
-                                @if($donHang->SoTienGiam > 0 && $donHang->MaMaGiamGia)
+                                @if($donHang->SoTienGiam > 0 && $donHang->MaGiamGia)
                                 {{-- Có mã giảm giá - Hiển thị chi tiết --}}
                                 <tr class="border-top border-2">
                                     <td colspan="3" class="text-end pt-3">Giá gốc:</td>

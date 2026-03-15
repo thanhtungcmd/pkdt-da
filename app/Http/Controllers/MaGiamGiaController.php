@@ -74,7 +74,7 @@ class MaGiamGiaController extends Controller
         $maGiamGia = MaGiamGia::findOrFail($id);
 
         $validated = $request->validate([
-            'MaCode' => 'required|string|max:50|unique:ma_giam_gia,MaCode,' . $id . ',MaMaGiamGia',
+            'MaCode' => 'required|string|max:50|unique:ma_giam_gia,MaCode,' . $id . ',MaGiamGia',
             'LoaiGiam' => 'required|in:fixed,percent',
             'GiaTri' => 'required|numeric|min:0',
             'DonToiThieu' => 'nullable|numeric|min:0',
@@ -139,7 +139,7 @@ class MaGiamGiaController extends Controller
         if ($result['success']) {
             // Lưu mã vào session
             session(['applied_coupon' => [
-                'MaMaGiamGia' => $maGiamGia->MaMaGiamGia,
+                'MaGiamGia' => $maGiamGia->MaGiamGia,
                 'MaCode' => $maGiamGia->MaCode,
                 'SoTienGiam' => $result['discount'],
                 'LoaiGiam' => $maGiamGia->LoaiGiam,        // THÊM
@@ -153,7 +153,7 @@ class MaGiamGiaController extends Controller
                 'message' => $result['message'],
                 'discount' => $result['discount'],
                 'coupon' => [
-                    'MaMaGiamGia' => $maGiamGia->MaMaGiamGia,
+                    'MaGiamGia' => $maGiamGia->MaGiamGia,
                     'MaCode' => $maGiamGia->MaCode,
                     'LoaiGiam' => $maGiamGia->LoaiGiam,
                     'GiaTri' => $maGiamGia->GiaTri

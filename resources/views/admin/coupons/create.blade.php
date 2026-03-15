@@ -17,7 +17,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ isset($maGiamGia) ? route('admin.coupons.update', $maGiamGia->MaMaGiamGia) : route('admin.coupons.store') }}" 
+            <form action="{{ isset($maGiamGia) ? route('admin.coupons.update', $maGiamGia->MaGiamGia) : route('admin.coupons.store') }}" 
                   method="POST">
                 @csrf
                 @if(isset($maGiamGia))

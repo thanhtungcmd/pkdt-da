@@ -13,7 +13,7 @@ class LichSuMaGiamGia extends Model
     protected $primaryKey = 'MaLichSu';
 
     protected $fillable = [
-        'MaMaGiamGia',
+        'MaGiamGia',
         'MaNguoiDung',
         'MaDonHang',
         'SoTienGiam',
@@ -26,7 +26,7 @@ class LichSuMaGiamGia extends Model
 
     public function maGiamGia()
     {
-        return $this->belongsTo(MaGiamGia::class, 'MaMaGiamGia', 'MaMaGiamGia');
+        return $this->belongsTo(MaGiamGia::class, 'MaGiamGia', 'MaGiamGia');
     }
 
     public function nguoiDung()

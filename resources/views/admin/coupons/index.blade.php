@@ -96,15 +96,15 @@
                             </td>
                             <td class="text-center">
                                 <div class="btn-group" role="group">
-                                    <a href="{{ route('admin.coupons.history', $item->MaMaGiamGia) }}" 
+                                    <a href="{{ route('admin.coupons.history', $item->MaGiamGia) }}" 
                                     class="btn btn-sm btn-outline-info" title="Lịch sử sử dụng">
                                         <i class="bi bi-clock-history"></i>
                                     </a>
-                                    <a href="{{ route('admin.coupons.edit', $item->MaMaGiamGia) }}" 
+                                    <a href="{{ route('admin.coupons.edit', $item->MaGiamGia) }}" 
                                     class="btn btn-sm btn-outline-primary" title="Chỉnh sửa">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-                                    <form action="{{ route('admin.coupons.destroy', $item->MaMaGiamGia) }}" 
+                                    <form action="{{ route('admin.coupons.destroy', $item->MaGiamGia) }}" 
                                         method="POST" class="d-inline" 
                                         onsubmit="return confirm('Bạn có chắc muốn xóa mã {{ $item->MaCode }}?')">
                                         @csrf
