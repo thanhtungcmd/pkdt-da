@@ -174,6 +174,32 @@
                     <p class="text-muted">{{ $sanPham->MoTa }}</p>
                 </div>
             </div>
+            @if(!empty($sanPham->ThongSoKyThuat))
+            <div class="card mt-4">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="bi bi-list-check"></i> Thông số kỹ thuật
+                    </h5>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped mb-0 align-middle">
+                        <tbody>
+                            @foreach($sanPham->ThongSoKyThuat as $key => $value)
+                            <tr>
+                                <th style="width: 35%; background: #f8f9fa;">
+                                    {{ $key }}
+                                </th>
+                                <td>
+                                    {{ $value }}
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
     
