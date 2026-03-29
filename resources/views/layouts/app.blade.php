@@ -28,7 +28,7 @@
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
                         <a class="navbar-brand" href="/">
-                            <img src="/assets/images/logo/logo.svg" alt="Logo">
+                            <img src="/assets/images/logo/logo.png" alt="Logo">
                         </a>
                         <!-- End Header Logo -->
                     </div>
@@ -122,7 +122,7 @@
                         <div class="col-lg-3 col-md-4 col-12">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="/assets/images/logo/white-logo.svg" alt="#">
+                                    <img src="/assets/images/logo/logo.png" alt="#">
                                 </a>
                             </div>
                         </div>
