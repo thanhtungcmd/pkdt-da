@@ -34,16 +34,17 @@
                     </div>
                     <div class="col-lg-5 col-md-7 d-xs-none">
                         <!-- Start Main Menu Search -->
-                        <div class="main-menu-search">
+                        <div class="main-menu-search position-relative">
                             <!-- navbar search start -->
                             <div class="navbar-search search-style-5">
                                 <div class="search-input">
-                                    <input type="text" placeholder="Tìm kiếm">
+                                    <input type="text" id="live-search" placeholder="Tìm kiếm">
                                 </div>
                                 <div class="search-btn">
                                     <button><i class="lni lni-search-alt"></i></button>
                                 </div>
                             </div>
+                             <div id="search-result" class="search-dropdown shadow"></div>
                             <!-- navbar search Ends -->
                         </div>
                         <!-- End Main Menu Search -->
@@ -272,6 +273,56 @@
     <script src="/assets/js/main.js"></script>
 
     @yield('scripts')
+    <script>
+        let typingTimer;
+        let doneTypingInterval = 300;
+
+        const input = document.getElementById('live-search');
+        const resultBox = document.getElementById('search-result');
+
+        input.addEventListener('keyup', function () {
+            clearTimeout(typingTimer);
+
+            let keyword = this.value.trim();
+
+            if (keyword.length < 2) {
+                resultBox.style.display = "none";
+                return;
+            }
+
+            typingTimer = setTimeout(() => {
+                fetch(`/search?q=${keyword}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        let html = '';
+
+                        if (data.length === 0) {
+                            html = `<div class="p-2">Không tìm thấy sản phẩm</div>`;
+                        } else {
+                            data.forEach(p => {
+                                html += `
+                                <a href="/products/${p.MaSanPham}" class="search-item text-decoration-none text-dark">
+                                    <img src="${p.AnhChinh}">
+                                    <div>
+                                        <div>${p.TenSanPham}</div>
+                                    </div>
+                                </a>`;
+                            });
+                        }
+
+                        resultBox.innerHTML = html;
+                        resultBox.style.display = "block";
+                    });
+            }, doneTypingInterval);
+        });
+
+        // Ẩn khi click ra ngoài
+        document.addEventListener('click', function(e){
+            if(!document.querySelector('.main-menu-search').contains(e.target)){
+                resultBox.style.display = "none";
+            }
+        });
+        </script>
     
 </body>
 

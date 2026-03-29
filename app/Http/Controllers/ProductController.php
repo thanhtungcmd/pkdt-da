@@ -133,9 +133,10 @@ class ProductController extends Controller
         $sanPham = SanPham::with(['danhMuc', 'bienThe'])
             ->where('TenSanPham', 'like', '%' . $keyword . '%')
             ->orWhere('MoTa', 'like', '%' . $keyword . '%')
+            ->limit(8)
             ->hienThi()
-            ->paginate(12);
+            ->get();
 
-        return view('products.search', compact('sanPham', 'keyword'));
+        return response()->json($sanPham);
     }
 }
