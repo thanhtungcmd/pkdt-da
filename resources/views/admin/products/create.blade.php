@@ -60,6 +60,28 @@
                         preview.style.display = 'block';
                     }
                     </script>
+
+                    <div class="mb-3">
+                        <label class="form-label">Thông số kỹ thuật</label>
+                        <div id="specs-wrapper">
+                            <div class="row mb-2 spec-item">
+                                <div class="col-md-5">
+                                    <input type="text" name="spec_key[]" class="form-control" placeholder="Ví dụ: Kích thước">
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" name="spec_value[]" class="form-control" placeholder="Ví dụ: 10 x 20 x 5 cm">
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger w-100" onclick="removeSpec(this)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary mt-2" onclick="addSpec()">
+                            <i class="bi bi-plus-circle"></i> Thêm thông số
+                        </button>
+                    </div>
                     
                     <div class="mb-3">
                         <label class="form-label">Mô tả</label>
@@ -91,4 +113,28 @@
         </div>
     </div>
 </div>
+
+<script>
+function addSpec() {
+    const html = `
+    <div class="row mb-2 spec-item">
+        <div class="col-md-5">
+            <input type="text" name="spec_key[]" class="form-control" placeholder="Tên thông số">
+        </div>
+        <div class="col-md-5">
+            <input type="text" name="spec_value[]" class="form-control" placeholder="Giá trị">
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-danger w-100" onclick="removeSpec(this)">
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+    </div>`;
+    document.getElementById('specs-wrapper').insertAdjacentHTML('beforeend', html);
+}
+
+function removeSpec(btn) {
+    btn.closest('.spec-item').remove();
+}
+</script>
 @endsection

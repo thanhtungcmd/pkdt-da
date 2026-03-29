@@ -62,6 +62,46 @@
                         preview.src = URL.createObjectURL(event.target.files[0]);
                     }
                     </script>
+
+                    <div class="mb-3">
+                        <label class="form-label">Thông số kỹ thuật</label>
+                        <div id="specs-wrapper">
+                            @if(!empty($sanPham->ThongSoKyThuat))
+                                @foreach($sanPham->ThongSoKyThuat as $key => $value)
+                                <div class="row mb-2 spec-item">
+                                    <div class="col-md-5">
+                                        <input type="text" name="spec_key[]" class="form-control" value="{{ $key }}">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" name="spec_value[]" class="form-control" value="{{ $value }}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-danger w-100" onclick="removeSpec(this)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @else
+                                <div class="row mb-2 spec-item">
+                                    <div class="col-md-5">
+                                        <input type="text" name="spec_key[]" class="form-control" placeholder="Tên thông số">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" name="spec_value[]" class="form-control" placeholder="Giá trị">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-danger w-100" onclick="removeSpec(this)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
+                        <button type="button" class="btn btn-outline-primary mt-2" onclick="addSpec()">
+                            <i class="bi bi-plus-circle"></i> Thêm thông số
+                        </button>
+                    </div>
                     
                     <div class="mb-3">
                         <label class="form-label">Mô tả</label>
@@ -92,4 +132,28 @@
         </div>
     </div>
 </div>
+
+<script>
+function addSpec() {
+    const html = `
+    <div class="row mb-2 spec-item">
+        <div class="col-md-5">
+            <input type="text" name="spec_key[]" class="form-control" placeholder="Tên thông số">
+        </div>
+        <div class="col-md-5">
+            <input type="text" name="spec_value[]" class="form-control" placeholder="Giá trị">
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-danger w-100" onclick="removeSpec(this)">
+                <i class="bi bi-trash"></i>
+            </button>
+        </div>
+    </div>`;
+    document.getElementById('specs-wrapper').insertAdjacentHTML('beforeend', html);
+}
+
+function removeSpec(btn) {
+    btn.closest('.spec-item').remove();
+}
+</script>
 @endsection

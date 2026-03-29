@@ -29,6 +29,17 @@ class ProductController extends Controller
     // Lưu sản phẩm mới
     public function store(Request $request)
     {
+        // Xử lý thông số kỹ thuật
+        $specs = [];
+        $keys = $request->spec_key ?? [];
+        $values = $request->spec_value ?? [];
+
+        foreach ($keys as $i => $key) {
+            if ($key && isset($values[$i])) {
+                $specs[$key] = $values[$i];
+            }
+        }
+    
         $request->validate([
             'MaDanhMuc' => 'required|exists:danh_muc,MaDanhMuc',
             'TenSanPham' => 'required|max:255',
@@ -43,7 +54,7 @@ class ProductController extends Controller
             'AnhChinh.max' => 'Ảnh không được quá 2MB',
         ]);
 
-        $data = $request->except('AnhChinh');
+        $data = $request->except('AnhChinh','spec_key', 'spec_value');
         
         // Upload ảnh chính
         if ($request->hasFile('AnhChinh')) {
@@ -52,6 +63,7 @@ class ProductController extends Controller
             $file->move(public_path('images/products'), $fileName);
             $data['AnhChinh'] = '/images/products/' . $fileName;
         }
+        $data['ThongSoKyThuat'] = $specs;
 
         SanPham::create($data);
 
@@ -68,39 +80,51 @@ class ProductController extends Controller
 
     // Cập nhật sản phẩm
     public function update(Request $request, $id)
-{
-    $sanPham = SanPham::findOrFail($id);
+    {
+        $sanPham = SanPham::findOrFail($id);
 
-    $request->validate([
-        'MaDanhMuc' => 'required|exists:danh_muc,MaDanhMuc',
-        'TenSanPham' => 'required|max:255',
-        'ThuongHieu' => 'nullable|max:100',
-        'AnhChinh' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-        'MoTa' => 'nullable',
-        'TrangThai' => 'required|boolean',
-    ]);
+        // Xử lý thông số kỹ thuật
+        $specs = [];
+        $keys = $request->spec_key ?? [];
+        $values = $request->spec_value ?? [];
 
-    $data = $request->all();
-
-    if ($request->hasFile('AnhChinh')) {
-        // Xóa ảnh cũ
-        if ($sanPham->AnhChinh && file_exists(public_path($sanPham->AnhChinh))) {
-            unlink(public_path($sanPham->AnhChinh));
+        foreach ($keys as $i => $key) {
+            if ($key && isset($values[$i])) {
+                $specs[$key] = $values[$i];
+            }
         }
 
-        $file = $request->file('AnhChinh');
-        $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('images/products'), $fileName);
-        $data['AnhChinh'] = '/images/products/' . $fileName;
-    } else {
-        // Nếu không upload ảnh → giữ ảnh cũ
-        $data['AnhChinh'] = $sanPham->AnhChinh;
+        $request->validate([
+            'MaDanhMuc' => 'required|exists:danh_muc,MaDanhMuc',
+            'TenSanPham' => 'required|max:255',
+            'ThuongHieu' => 'nullable|max:100',
+            'AnhChinh' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'MoTa' => 'nullable',
+            'TrangThai' => 'required|boolean',
+        ]);
+
+        $data = $request->all();
+
+        if ($request->hasFile('AnhChinh')) {
+            // Xóa ảnh cũ
+            if ($sanPham->AnhChinh && file_exists(public_path($sanPham->AnhChinh))) {
+                unlink(public_path($sanPham->AnhChinh));
+            }
+
+            $file = $request->file('AnhChinh');
+            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/products'), $fileName);
+            $data['AnhChinh'] = '/images/products/' . $fileName;
+        } else {
+            // Nếu không upload ảnh → giữ ảnh cũ
+            $data['AnhChinh'] = $sanPham->AnhChinh;
+        }
+
+        $data['ThongSoKyThuat'] = $specs;
+        $sanPham->update($data);
+
+        return redirect()->route('admin.products.index')->with('success', 'Đã cập nhật sản phẩm!');
     }
-
-    $sanPham->update($data);
-
-    return redirect()->route('admin.products.index')->with('success', 'Đã cập nhật sản phẩm!');
-}
 
 
     // Xóa sản phẩm

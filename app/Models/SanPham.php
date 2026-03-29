@@ -14,6 +14,10 @@ class SanPham extends Model
     protected $table = 'san_pham';
     protected $primaryKey = 'MaSanPham';
 
+    protected $casts = [
+        'ThongSoKyThuat' => 'array',
+    ];
+
     protected $fillable = [
         'MaDanhMuc',
         'TenSanPham',
@@ -21,6 +25,7 @@ class SanPham extends Model
         'AnhChinh',
         'MoTa',
         'TrangThai',
+        'ThongSoKyThuat'
     ];
 
     // Relationship với DanhMuc
