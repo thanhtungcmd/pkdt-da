@@ -261,6 +261,21 @@ class OrderController extends Controller
                 return redirect()->route('vnpay.simulate', $donHang->MaDonHang);
             }
 
+            if ($request->PTThanhToan == 'Bank') {
+                $bankId = "970422"; 
+                $accountNo = "1234567899";
+                $accountName = "BUI THANH TUNG";
+                $template = "compact2";
+                $amount = $donHang->TongTien;
+                $description = "DH " . $donHang->MaDonHang;
+                $qrUrl = "https://img.vietqr.io/image/{$bankId}-{$accountNo}-{$template}.png"
+                    . "?amount={$amount}"
+                    . "&addInfo=" . urlencode($description)
+                    . "&accountName=" . urlencode($accountName);
+                    
+                return view('orders.bank', compact('donHang', 'qrUrl', 'accountNo', 'accountName'));
+            }
+
             return redirect()->route('orders.success', $donHang->MaDonHang)
                            ->with('success', 'Đặt hàng thành công!');
 
