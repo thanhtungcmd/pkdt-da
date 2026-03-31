@@ -24,7 +24,7 @@
                     <div class="text-start border rounded p-3 bg-light">
                         <p class="mb-1"><strong>Ngân hàng:</strong> MB Bank</p>
                         <p class="mb-1"><strong>Số tài khoản:</strong> {{ $accountNo }}</p>
-                        <p class="mb-1"><strong>Chủ tài khoản:</strong> {{ accountName }}</p>
+                        <p class="mb-1"><strong>Chủ tài khoản:</strong> {{ $accountName }}</p>
                         <p class="mb-0"><strong>Số tiền:</strong> 
                             <span class="text-danger fw-bold">
                                 {{ number_format($donHang->TongTien, 0, ',', '.') }}₫

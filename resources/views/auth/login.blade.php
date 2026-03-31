@@ -9,7 +9,7 @@
             <div class="card shadow">
                 <div class="card-body p-5">
                     <div class="text-center mb-4">
-                        <img src="/images/logo.png" alt="TechBox Shop" style="max-height: 80px; width: auto; object-fit: contain;">
+                        <img src="/assets/images/logo/logo.png" alt="TechBox Shop" style="max-height: 80px; width: auto; object-fit: contain;">
                         <h3 class="mt-3">Đăng nhập</h3>
                         <p class="text-muted">Chào mừng bạn quay trở lại!</p>
                     </div>
