@@ -228,12 +228,12 @@ class ProductController extends Controller
 }
 
 
-    // Xóa biến thể
+    // Xóa mềm biến thể
     public function destroyVariant($productId, $variantId)
     {
         $bienThe = CTSanPham::findOrFail($variantId);
-        $bienThe->delete();
+        $bienThe->delete(); // Soft delete
 
-        return redirect()->route('admin.products.variants', $productId)->with('success', 'Đã xóa biến thể!');
+        return redirect()->route('admin.products.variants', $productId)->with('success', 'Đã xóa (mềm) biến thể!');
     }
 }

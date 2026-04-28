@@ -97,7 +97,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index')->with('success', 'Đã cập nhật danh mục!');
     }
 
-    // Xóa danh mục
+    // Xóa mềm danh mục
     public function destroy($id)
     {
         $danhMuc = DanhMuc::findOrFail($id);
@@ -106,8 +106,8 @@ class CategoryController extends Controller
             return back()->with('error', 'Không thể xóa danh mục có sản phẩm!');
         }
 
-        $danhMuc->delete();
+        $danhMuc->delete(); // Soft delete
 
-        return redirect()->route('admin.categories.index')->with('success', 'Đã xóa danh mục!');
+        return redirect()->route('admin.categories.index')->with('success', 'Đã xóa (mềm) danh mục!');
     }
 }

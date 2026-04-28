@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DanhMuc extends Model
 {
-    use HasFactory;
+    use HasFactory, \Illuminate\Database\Eloquent\SoftDeletes;
 
     protected $table = 'danh_muc';
     protected $primaryKey = 'MaDanhMuc';

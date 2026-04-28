@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CTSanPham extends Model
 {
-    use HasFactory;
+    use HasFactory, \Illuminate\Database\Eloquent\SoftDeletes;
 
     protected $table = 'ct_san_pham';
     protected $primaryKey = 'MaCTSanPham';
