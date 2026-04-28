@@ -127,13 +127,13 @@ class ProductController extends Controller
     }
 
 
-    // Xóa sản phẩm
+    // Xóa mềm sản phẩm
     public function destroy($id)
     {
         $sanPham = SanPham::findOrFail($id);
-        $sanPham->delete();
+        $sanPham->delete(); // Soft delete
 
-        return redirect()->route('admin.products.index')->with('success', 'Đã xóa sản phẩm!');
+        return redirect()->route('admin.products.index')->with('success', 'Đã xóa (mềm) sản phẩm!');
     }
 
     // Quản lý biến thể

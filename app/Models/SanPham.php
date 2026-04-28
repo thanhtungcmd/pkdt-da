@@ -9,7 +9,7 @@ use App\Models\DanhGia;
 
 class SanPham extends Model
 {
-    use HasFactory;
+    use HasFactory, \Illuminate\Database\Eloquent\SoftDeletes;
 
     protected $table = 'san_pham';
     protected $primaryKey = 'MaSanPham';
